@@ -1,0 +1,43 @@
+<h2>Time Now: {{todayDate | date:'medium'}}</h2>
+<h2>Our Products:</h2>
+<table class="table">
+    <thead class="bg-dark text-light">
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price in USD</th>
+            <th>Price in EGP</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr *ngFor="let prd of prdList; let i=index" style="background-color: yellow; color:blue;"> -->
+        <!-- <tr *ngFor="let prd of prdList; let i=index" [style.background-color]="(prd.Quantity<1)? 'yellow': 'gray'"> -->
+        <tr *ngFor="let prd of prdList; let i=index" [ngStyle]="{'background-color':(prd.Quantity<1)? 'yellow': 'gray', 'color':(prd.Quantity<1)? 'blue': 'black'}">
+            <!-- <td>{{prd.id}}</td> -->
+            <td>{{i+1}}</td>
+            <td>{{prd.Name | uppercase}}</td>
+            <td>
+                <!-- ngId -->
+                <!-- <div *ngIf="prd.Quantity>0">{{prd.Quantity}}</div> -->
+
+                <!-- ngIf;else -->
+                <!-- <div *ngIf="prd.Quantity>0; else outOfStock">{{prd.Quantity}}</div>
+                <ng-template #outOfStock> Out of Stock</ng-template> -->
+
+                <!-- ngSwitch -->
+                <div [ngSwitch]="prd.Quantity">
+                    <div *ngSwitchCase="0"> Out of Stock</div>
+                    <div *ngSwitchCase="1"> Only one item is left</div>
+                    <div *ngSwitchCase="2"> Two items are left</div>
+                    <div *ngSwitchDefault>{{prd.Quantity}}</div>
+                </div>
+            </td>
+            <td>{{prd.Price | currency: 'USD':'symbol'}}</td>
+            <td>{{prd.Price | dollarToEgPound: 10 | currency:'EGP':'code'}}</td>
+            <!-- <td><img [src]="prd.ImgURL" alt="prd" appLightBox hoverColor="red" defaultColor="blue"></td> -->
+            <td><img [src]="prd.ImgURL" alt="prd" appLightBox="blue" hoverColor="red"></td>
+        </tr>
+    </tbody>
+</table>

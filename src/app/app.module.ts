@@ -7,6 +7,10 @@ import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { HomeComponent } from './Components/home/home.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsComponent } from './Components/products/products.component';
+import { LightBoxDirective } from './Directives/light-box.directive';
+import { DollarToEgPoundPipe } from './Pipes/dollar-to-eg-pound.pipe';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,15 @@ import { HomeComponent } from './Components/home/home.component';
     HeaderComponent,
     FooterComponent,
     SideBarComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsComponent,
+    LightBoxDirective,
+    DollarToEgPoundPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

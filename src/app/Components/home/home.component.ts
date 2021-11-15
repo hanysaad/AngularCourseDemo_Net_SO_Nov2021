@@ -9,6 +9,7 @@ import { StoreInfo } from 'src/app/models/store-info';
 export class HomeComponent implements OnInit {
   storeData:StoreInfo;
   showLogo:boolean=true;
+  clientFeedback:string="Your Feedback";
   constructor() { 
     this.storeData=new StoreInfo("ITI Store","https://fakeimg.pl/250x100/",["Store", "Delivery", "selling"])
   }

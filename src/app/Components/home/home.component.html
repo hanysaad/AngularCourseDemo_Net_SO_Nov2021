@@ -1,5 +1,5 @@
 <h1>Hello World</h1>
-<h3>Store Name: {{storeData.name}}</h3>
+<h3>Store Name: {{storeData?.name}}</h3>
 <!-- <img src="{{storeData.logo}}" alt="logo"> -->
 <!-- <img *ngIf="showLogo" [src]="storeData.logo" alt="logo"> -->
 <img [hidden]="!showLogo" [src]="storeData.logo" alt="logo">
@@ -10,4 +10,15 @@
     </li>
 </ul>
 <br>
-<button class="btn btn-primary" (click)="toggleImg()">Show / hide</button>
+<!-- <button [class.highlighted]="showLogo" class="btn btn-primary" (click)="toggleImg()">Show / hide</button> -->
+<button [style.background-color]="showLogo?'yellow':'blue'" class="btn btn-primary" (click)="toggleImg()">Show / hide</button>
+
+<hr>
+
+<div class="mb-3">
+    <label for="" class="form-label">Enter your Feedback:</label>
+    <input type="text" [(ngModel)]="clientFeedback" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
+</div>
+<div>
+    Your Entered: {{clientFeedback}}
+</div>
