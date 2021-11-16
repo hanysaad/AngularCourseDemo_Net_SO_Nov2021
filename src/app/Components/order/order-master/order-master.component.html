@@ -1,0 +1,29 @@
+<h2>Make your Order</h2>
+<div class="mb-3">
+    <label for="" class="form-label">Your Name:</label>
+    <input type="text" class="form-control" #custNameInp name="" id="" aria-describedby="helpId" placeholder="">
+
+</div>
+<div class="mb-3">
+    <label for="cat" class="form-label">Select Category</label>
+    <select class="form-control" name="cat" id="cat" [(ngModel)]="selectedCatID">
+        <option *ngFor="let cat of catList" [value]="cat.id">{{cat.Name}}</option>
+    </select>
+</div>
+<div>
+    For Test: {{selectedCatID}}
+</div>
+<hr>
+
+<div class="bg-warning">
+    <app-order-details [sentSelCatID]="selectedCatID" (orderTotalPriceChanged)="onOrderTotalPriceChanged($event)"></app-order-details>
+</div>
+
+<hr>
+<div>
+    <h3>Your Order total price:
+        <span class="text-secondary">{{receivedOrderTotalPrice | currency}}</span>
+    </h3>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="getSelCatProducts()">Check selcted category products</button>

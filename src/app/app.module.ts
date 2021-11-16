@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { ProductsComponent } from './Components/products/products.component';
 import { LightBoxDirective } from './Directives/light-box.directive';
 import { DollarToEgPoundPipe } from './Pipes/dollar-to-eg-pound.pipe';
+import { OrderMasterComponent } from './Components/order/order-master/order-master.component';
+import { OrderDetailsComponent } from './Components/order/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { DollarToEgPoundPipe } from './Pipes/dollar-to-eg-pound.pipe';
     HomeComponent,
     ProductsComponent,
     LightBoxDirective,
-    DollarToEgPoundPipe
+    DollarToEgPoundPipe,
+    OrderMasterComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
