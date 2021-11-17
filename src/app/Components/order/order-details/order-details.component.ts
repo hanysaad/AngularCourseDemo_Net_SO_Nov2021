@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { IProduct } from 'src/app/models/iproduct';
 import { ProductStaticService } from 'src/app/Services/product-static.service';
 
@@ -16,7 +17,8 @@ orderTotalPrice:number=0;
 @Output() orderTotalPriceChanged: EventEmitter<number>;
 
 //prdService:ProductStaticService;
-  constructor(private prdService:ProductStaticService) {
+  constructor(private prdService:ProductStaticService
+            , private router:Router) {
     //this.prdService=prdService;
     this.orderTotalPriceChanged=new EventEmitter<number>();
    }
@@ -37,6 +39,13 @@ orderTotalPrice:number=0;
     this.orderTotalPrice+=(itemPrice * +itemCount);
 
     this.orderTotalPriceChanged.emit(this.orderTotalPrice);
+  }
+
+  openProductDetails(productID:number|undefined)
+  {
+    this.router.navigate(['/Products',productID])
+      // .then(()=>{console.log('Navigation completed')})
+      // .catch(()=>{console.log('Error in navigation')});
   }
 
 }

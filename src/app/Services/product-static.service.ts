@@ -30,9 +30,10 @@ export class ProductStaticService {
       return this.prdList.filter(prd=>prd.CategoryID==catID);
    }
 
-   getProductByID(prdID: number):IProduct|undefined
+   getProductByID(prdID: number):IProduct
    {
-     return this.prdList.find(prd=>prd.id==prdID);
+     let foundPrd=this.prdList.find(prd=>prd.id==prdID);
+     return (foundPrd)?foundPrd: {} as IProduct;
    }
 
    addProduct(){
