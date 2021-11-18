@@ -25,11 +25,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" routerLink="/Login" routerLinkActive="active">Login</a>
+                    <a class="nav-link" href="#" routerLink="/Login" routerLinkActive="active" [hidden]="isUsrLogged">Login</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" routerLink="/Login" routerLinkActive="active">Logout</a>
+                    <a class="nav-link" href="#" routerLink="/Login" routerLinkActive="active" [hidden]="!isUsrLogged">Logout</a>
                 </li>
 
 

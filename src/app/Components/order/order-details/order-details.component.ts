@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { Router } from '@angular/router';
 import { IProduct } from 'src/app/models/iproduct';
 import { ProductStaticService } from 'src/app/Services/product-static.service';
+import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
   selector: 'app-order-details',
@@ -18,6 +19,7 @@ orderTotalPrice:number=0;
 
 //prdService:ProductStaticService;
   constructor(private prdService:ProductStaticService
+            , private prdServiceFrmAPI:ProductService
             , private router:Router) {
     //this.prdService=prdService;
     this.orderTotalPriceChanged=new EventEmitter<number>();
@@ -28,7 +30,16 @@ orderTotalPrice:number=0;
   }
 
   ngOnInit(): void {
-    this.prdList=this.prdService.getAllProducts();
+    //this.prdList=this.prdService.getAllProducts();
+    this.prdServiceFrmAPI.getAll().subscribe({
+      next: (products)=>{
+        this.prdList=products;
+        this.prdlistForSelCat=Array.from(this.prdList);
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    });
   }
 
   calcTotalPrice(itemPrice:number, itemCount:any)

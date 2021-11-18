@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { OrderDetailsComponent } from './Components/order/order-details/order-de
 import { NotFoundComponent } from './Components/not-found/not-found.component';
 import { ProductDetailsComponent } from './Components/product-details/product-details.component';
 import { UserLoginComponent } from './Components/user-login/user-login.component';
+import { CreateProductComponent } from './Components/create-product/create-product.component';
 
 @NgModule({
   declarations: [
@@ -31,11 +33,13 @@ import { UserLoginComponent } from './Components/user-login/user-login.component
     OrderDetailsComponent,
     NotFoundComponent,
     ProductDetailsComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    CreateProductComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     //RouterModule.forRoot(routes),
     FormsModule
   ],
